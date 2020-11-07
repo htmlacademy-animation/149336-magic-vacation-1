@@ -47,9 +47,32 @@
 
 .social-block {
     &__link {
-        transition-property: color;
+        opacity: 0;
+        transform: translateY(1rem);
+        transition-property: opacity, transform, color;
         transition-duration: 0.6s;
         transition-timing-function: ease;
+    }
+
+    &__list {
+
+        li {
+
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i}) a {
+                    transition-delay: (0.2s * $i), (0.2s * $i), 0.2s;
+                }
+            }
+        }
+    }
+
+    &--active {
+        .social-block {
+            &__link {
+                opacity: 1;
+                transform: none;
+            }
+        }
     }
 }
 
@@ -80,7 +103,7 @@
 
 .intro__message {
     p {
-        transform: translateY(40px);
+        transform: translateY(3rem);
         opacity: 0;
         visibility: hidden;
         transition-property: all;
@@ -93,7 +116,7 @@
     &__item-text {
         opacity: 0;
         visibility: hidden;
-        transform: translateX(50px);
+        transform: translateX(4rem);
         transition-property: opacity, visibility, transform;
         transition-duration: 0.4s;
         transition-timing-function: ease;
