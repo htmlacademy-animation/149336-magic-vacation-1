@@ -177,7 +177,7 @@
 
 .page-header {
     &__logo {
-        margin-left: -2rem;
+        transform: translateX(-2rem);
         opacity: 0;
         transition-property: all;
         transition-duration: 0.3s;
@@ -185,7 +185,7 @@
     }
 
     &__nav {
-        margin-right: -0.5rem;
+        transform: translateX(0.5rem);
         opacity: 0;
         transition-property: all;
         transition-duration: 0.2s;
@@ -205,12 +205,12 @@
     .page-header {
         &__logo {
             opacity: 1;
-            margin-left: 0;
+            transform: none;
         }
 
         &__nav {
             opacity: 1;
-            margin-right: 0;
+            transform: none;
         }
     }
 
