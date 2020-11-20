@@ -3400,14 +3400,14 @@ img {
     flex-grow: 0; }
 
 .page-header__logo {
-  margin-left: -2rem;
+  transform: translateX(-2rem);
   opacity: 0;
   transition-property: all;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.5, 0.31, 0.28, 1); }
 
 .page-header__nav {
-  margin-right: -0.5rem;
+  transform: translateX(0.5rem);
   opacity: 0;
   transition-property: all;
   transition-duration: 0.2s;
@@ -3422,11 +3422,11 @@ img {
 
 .loaded .page-header__logo {
   opacity: 1;
-  margin-left: 0; }
+  transform: none; }
 
 .loaded .page-header__nav {
   opacity: 1;
-  margin-right: 0; }
+  transform: none; }
 
 .loaded .social-block__toggler::before {
   width: 100%;
