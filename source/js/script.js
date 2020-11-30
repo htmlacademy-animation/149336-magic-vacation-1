@@ -25,3 +25,11 @@ fullPageScroll.init();
 window.onload = function () {
   document.querySelector(`body`).classList.add(`loaded`);
 };
+
+document.addEventListener(`DOMContentLoaded`, function () {
+  const parentEl = document.querySelector(`.page-content .screen--prizes`);
+  const curtain = document.createElement(`div`);
+  const pointer = parentEl.querySelector(`.screen__wrapper`);
+  curtain.className = `curtain`;
+  parentEl.insertBefore(curtain, pointer);
+});

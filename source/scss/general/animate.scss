@@ -246,3 +246,30 @@
         transform: none;
     }
 }
+
+.curtain {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    background: #5f458c;
+    //z-index: 9;
+    transition-property: height;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+body {
+    background-color: transparent;
+}
+
+.screen--prizes {
+    background-color: transparent;
+
+    &.active {
+        .curtain {
+            height: 100%;
+        }
+    }
+}
