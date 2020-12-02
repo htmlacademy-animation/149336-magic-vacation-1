@@ -253,7 +253,7 @@
     right: 0;
     bottom: 0;
     height: 0;
-    background: #5f458c;
+    background: $c-dark;
     //z-index: 9;
     transition-property: height;
     transition-duration: 0.3s;
@@ -271,5 +271,118 @@ body {
         .curtain {
             height: 100%;
         }
+    }
+}
+
+.rules__item {
+    &::before {
+        /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+        animation-duration: 0.5s;
+        animation-timing-function: cubic-bezier(0,1.8,1,1);
+        animation-delay: 0.5s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: both;
+        animation-play-state: running;
+        animation-name: bullet;
+    }
+
+    p {
+        /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+        animation-duration: 0.5s;
+        animation-timing-function: cubic-bezier(.5,.30,.6,1);
+        animation-delay: 0.8s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: both;
+        animation-play-state: running;
+        animation-name: rules_text;
+        opacity: 0;
+    }
+
+    @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+            &::before,
+            p {
+                animation-delay: (0.2s * $i);
+            }
+        }
+    }
+}
+
+@keyframes bullet {
+    from {
+        transform: scale(0);
+        opacity: 0;
+        overflow: hidden;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes rules_text {
+    from {
+        transform: translateX(3rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.rules__link {
+    /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+    animation-duration: 0.3s, 0.2s;
+    animation-timing-function: cubic-bezier(0,1,1,1), cubic-bezier(0,1,1,1);
+    animation-delay: 1s, 1.3s;
+    animation-iteration-count: 1, 1;
+    animation-direction: normal, normal;
+    animation-fill-mode: both, both;
+    animation-play-state: running, running;
+    animation-name: drove, drove_bg;
+
+    &::before {
+        /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+        animation-duration: 0.01s;
+        animation-timing-function: linear;
+        animation-delay: 0.95s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: both;
+        animation-play-state: running;
+        animation-name: add;
+    }
+}
+
+@keyframes drove {
+    0% {
+        font-size: 0;
+    }
+    50% {
+        font-size: 0;
+    }
+    100% {
+        font-size: 2.4rem;
+    }
+}
+
+@keyframes add {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes drove_bg {
+    0% {
+        color: transparent;
+    }
+    100% {
+        color: $c-dark;
     }
 }
