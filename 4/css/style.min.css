@@ -3523,21 +3523,21 @@ body {
   /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
   animation-duration: 0.5s, 0.2s;
   animation-timing-function: cubic-bezier(0, 1, 1, 1), cubic-bezier(0, 1, 1, 1);
-  animation-delay: 1s, 1.5s;
+  animation-delay: 0s, 0.5s;
   animation-iteration-count: 1, 1;
   animation-direction: normal, normal;
   animation-fill-mode: both, both;
-  animation-play-state: running, running;
+  animation-play-state: paused, paused;
   animation-name: drove, drove_bg; }
   .rules__link::before {
     /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
     animation-duration: 0.01s;
     animation-timing-function: linear;
-    animation-delay: 1s;
+    animation-delay: 0s;
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-fill-mode: both;
-    animation-play-state: running;
+    animation-play-state: paused;
     animation-name: add; }
 
 @keyframes drove {
