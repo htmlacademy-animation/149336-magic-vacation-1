@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import CreateAnimatedSlogan from './slogan';
 
 export default class FullPageScroll {
   constructor() {
@@ -47,6 +48,12 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
+      // animate title
+      const animationTextLine = new CreateAnimatedSlogan(`.screen.active h2[class$="title"]`, 500, `active`, `transform`);
+      setTimeout(()=>{
+        animationTextLine.runAnimation();
+        // setTimeout(() => animationTextLine.destroyAnimation(), 1000);
+      }, 500);
     }, 500);
   }
 

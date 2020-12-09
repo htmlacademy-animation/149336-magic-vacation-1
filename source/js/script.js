@@ -8,6 +8,7 @@ import result from './modules/result.js';
 import form from './modules/form.js';
 import social from './modules/social.js';
 import FullPageScroll from './modules/full-page-scroll';
+import CreateAnimatedSlogan from './modules/slogan';
 
 // init modules
 mobileHeight();
@@ -35,7 +36,6 @@ document.addEventListener(`DOMContentLoaded`, function () {
 });
 
 const addStyle = function (element, css) {
-  // const css = `.rules__link { animation-play-state: running, running; } .rules__link::before { animation-play-state: running; }`;
   const head = document.head || document.getElementsByTagName(`head`)[0];
   const style = document.createElement(`style`);
 
@@ -56,3 +56,8 @@ rulesLink.addEventListener(`animationend`, function () {
   addStyle(rulesLink, rulesLinkStyle);
 });
 
+// Slogan animate
+const animationTopScreenTextLine = new CreateAnimatedSlogan(`.intro__title`, 500, `active`, `transform`);
+setTimeout(()=>{
+  animationTopScreenTextLine.runAnimation();
+}, 500);

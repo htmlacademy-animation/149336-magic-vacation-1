@@ -260,9 +260,9 @@
     transition-timing-function: ease;
 }
 
-body {
-    background-color: transparent;
-}
+// body {
+//     background-color: transparent;
+// }
 
 .screen--prizes {
     background-color: transparent;
@@ -384,5 +384,34 @@ body {
     }
     100% {
         color: $c-dark;
+    }
+}
+
+// Slogan
+.intro__title,
+#story .slider__item-title,
+#prizes .prizes__title,
+#rules .rules__title,
+#game .game__title {
+    max-width: 102rem;
+
+    .text__word {
+        display: inline-block;
+        margin: 0 5px;
+        overflow: hidden;
+
+        & > span {
+            transform: translate3d(0, 1em, 0);
+            display: inline-block;
+        }
+    }
+
+    &.active {
+        .text__word {
+            & > span {
+                transform: translate3d(0, 0, 0);
+                vertical-align: sub;
+            }
+        }
     }
 }
