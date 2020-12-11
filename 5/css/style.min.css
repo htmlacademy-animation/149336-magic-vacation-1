@@ -3558,12 +3558,15 @@ img {
     color: #5f458c; } }
 
 .intro__title,
+.intro__date,
 #story .slider__item-title,
 #prizes .prizes__title,
 #rules .rules__title,
 #game .game__title {
-  max-width: 102rem; }
+  max-width: 102rem;
+  opacity: 0; }
   .intro__title .text__word,
+  .intro__date .text__word,
   #story .slider__item-title .text__word,
   #prizes .prizes__title .text__word,
   #rules .rules__title .text__word,
@@ -3572,19 +3575,28 @@ img {
     margin: 0 5px;
     overflow: hidden; }
     .intro__title .text__word > span,
+    .intro__date .text__word > span,
     #story .slider__item-title .text__word > span,
     #prizes .prizes__title .text__word > span,
     #rules .rules__title .text__word > span,
     #game .game__title .text__word > span {
       transform: translate3d(0, 1em, 0);
       display: inline-block; }
-  .intro__title.active .text__word > span,
-  #story .slider__item-title.active .text__word > span,
-  #prizes .prizes__title.active .text__word > span,
-  #rules .rules__title.active .text__word > span,
-  #game .game__title.active .text__word > span {
-    transform: translate3d(0, 0, 0);
-    vertical-align: sub; }
+  .intro__title.active,
+  .intro__date.active,
+  #story .slider__item-title.active,
+  #prizes .prizes__title.active,
+  #rules .rules__title.active,
+  #game .game__title.active {
+    opacity: 1; }
+    .intro__title.active .text__word > span,
+    .intro__date.active .text__word > span,
+    #story .slider__item-title.active .text__word > span,
+    #prizes .prizes__title.active .text__word > span,
+    #rules .rules__title.active .text__word > span,
+    #game .game__title.active .text__word > span {
+      transform: translate3d(0, 0, 0);
+      vertical-align: sub; }
 
 
 /*# sourceMappingURL=style.min.css.map*/
