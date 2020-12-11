@@ -5,8 +5,6 @@ export default class CreateAnimatedSlogan {
       classForActivate,
       property
   ) {
-    this._TIME_SPACE = 100;
-
     this._elementSelector = elementSelector;
     this._timer = timer;
     this._classForActivate = classForActivate;
@@ -16,59 +14,49 @@ export default class CreateAnimatedSlogan {
     this.prePareText();
   }
 
-  countDelayLetter(letter, pre, index) {
+  countDelayLetter(counter) {
     let delayLetter;
-    switch (pre) {
-      case 0:
-        switch (index) {
-          case 0:
-            delayLetter = 300;
-            break;
-          case 1:
-          case 3:
-          case 5:
-            delayLetter = 100;
-            break;
-          case 2:
-          case 6:
-          case 9:
-          case 11:
-            delayLetter = 0;
-            break;
-          case 4:
-          case 8:
-          case 10:
-            delayLetter = 200;
-            break;
-          case 7:
-            delayLetter = 400;
-            break;
-          default:
-            delayLetter = 1000;
-        }
-        break;
+    switch (counter) {
       case 1:
-        switch (index) {
-          case 3:
-            delayLetter = 500;
-            break;
-          case 5:
-            delayLetter = 600;
-            break;
-          case 2:
-            delayLetter = 700;
-            break;
-          case 0:
-          case 4:
-            delayLetter = 800;
-            break;
-          case 1:
-            delayLetter = 900;
-            break;
-          default:
-            delayLetter = 1000;
-        }
+        delayLetter = 300;
         break;
+      case 2:
+      case 4:
+      case 6:
+        delayLetter = 100;
+        break;
+      case 3:
+      case 7:
+      case 10:
+      case 12:
+        delayLetter = 0;
+        break;
+      case 5:
+      case 9:
+      case 11:
+        delayLetter = 200;
+        break;
+      case 8:
+        delayLetter = 400;
+        break;
+      case 16:
+        delayLetter = 500;
+        break;
+      case 18:
+        delayLetter = 600;
+        break;
+      case 15:
+        delayLetter = 700;
+        break;
+      case 13:
+      case 17:
+        delayLetter = 800;
+        break;
+      case 14:
+        delayLetter = 900;
+        break;
+      default:
+        delayLetter = 1000;
     }
     return delayLetter;
   }
@@ -85,11 +73,13 @@ export default class CreateAnimatedSlogan {
       return;
     }
     const text = this._element.textContent.trim().split(` `).filter((latter)=>latter !== ``);
+    this._element.dataset.text = text.join(` `);
     // result = [Т,3],[а,1],[и, 0],[н,1],[с,2],[т,1],[в,0],[е,4],[н,2],[н,0],[ы,2],[й,0],[о,8],[т,9],[п,7],[у,5],[с,8],[к,6]
-    const content = text.reduce((fragmentParent, word, index) => {
-      let pre = index;
-      const wordElement = Array.from(word).reduce((fragment, latter, ind) => {
-        fragment.appendChild(this.createElement(latter, this.countDelayLetter(latter, pre, ind)));
+    let counter = 0;
+    const content = text.reduce((fragmentParent, word) => {
+      const wordElement = Array.from(word).reduce((fragment, latter) => {
+        counter = counter + 1;
+        fragment.appendChild(this.createElement(latter, this.countDelayLetter(counter)));
         return fragment;
       }, document.createDocumentFragment());
       const wordContainer = document.createElement(`span`);
@@ -112,5 +102,6 @@ export default class CreateAnimatedSlogan {
 
   destroyAnimation() {
     this._element.classList.remove(this._classForActivate);
+    this._element.textContent = this._element.dataset.text;
   }
 }

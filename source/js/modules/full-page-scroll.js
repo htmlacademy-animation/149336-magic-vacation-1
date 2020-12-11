@@ -44,16 +44,32 @@ export default class FullPageScroll {
     this.screenElements.forEach((screen) => {
       screen.classList.add(`screen--hidden`);
       screen.classList.remove(`active`);
+      if (screen.querySelector(`h1[class*="title"][data-text], p.intro__date[data-text], h2[class*="title"][data-text]`)) {
+        let el = screen.querySelector(`h1[class*="title"][data-text], p.intro__date[data-text], h2[class*="title"][data-text]`);
+        el.textContent = el.dataset.text;
+        el.removeAttribute(`data-text`);
+        el.classList.remove(`active`);
+      }
     });
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
       // animate title
-      const animationTextLine = new CreateAnimatedSlogan(`.screen.active h2[class$="title"]`, 500, `active`, `transform`);
-      setTimeout(()=>{
-        animationTextLine.runAnimation();
-        // setTimeout(() => animationTextLine.destroyAnimation(), 1000);
-      }, 500);
+      if (this.activeScreen === 0) {
+        // Slogan animate
+        const animationTopScreenTextLine = new CreateAnimatedSlogan(`.intro__title`, 500, `active`, `transform`);
+        const animationBottomScreenTextLine = new CreateAnimatedSlogan(`.intro__date`, 500, `active`, `transform`);
+        setTimeout(()=>{
+          animationTopScreenTextLine.runAnimation();
+          animationBottomScreenTextLine.runAnimation();
+        }, 500);
+      } else {
+        const animationTextLine = new CreateAnimatedSlogan(`.screen.active h2[class$="title"]`, 500, `active`, `transform`);
+        setTimeout(()=>{
+          animationTextLine.runAnimation();
+          // setTimeout(() => animationTextLine.destroyAnimation(), 1000);
+        }, 500);
+      }
     }, 500);
   }
 

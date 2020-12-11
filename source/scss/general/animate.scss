@@ -389,11 +389,13 @@
 
 // Slogan
 .intro__title,
+.intro__date,
 #story .slider__item-title,
 #prizes .prizes__title,
 #rules .rules__title,
 #game .game__title {
     max-width: 102rem;
+    opacity: 0;
 
     .text__word {
         display: inline-block;
@@ -407,6 +409,8 @@
     }
 
     &.active {
+        opacity: 1;
+
         .text__word {
             & > span {
                 transform: translate3d(0, 0, 0);
