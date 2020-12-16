@@ -58,11 +58,13 @@ export default class FullPageScroll {
       if (this.activeScreen === 0) {
         // Slogan animate
         const animationTopScreenTextLine = new CreateAnimatedSlogan(`.intro__title`, 500, `active`, `transform`);
-        const animationBottomScreenTextLine = new CreateAnimatedSlogan(`.intro__date`, 500, `active`, `transform`);
         setTimeout(()=>{
           animationTopScreenTextLine.runAnimation();
-          animationBottomScreenTextLine.runAnimation();
-        }, 500);
+          const animationBottomScreenTextLine = new CreateAnimatedSlogan(`.intro__date`, 500, `active`, `transform`);
+          setTimeout(()=>{
+            animationBottomScreenTextLine.runAnimation();
+          }, 1500);
+        }, 200);
       } else {
         const animationTextLine = new CreateAnimatedSlogan(`.screen.active h2[class$="title"]`, 500, `active`, `transform`);
         setTimeout(()=>{

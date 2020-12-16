@@ -54,3 +54,9 @@ const rulesLinkStyle = `.rules__link { animation-play-state: running, running; }
 rulesLink.addEventListener(`animationend`, function () {
   addStyle(rulesLink, rulesLinkStyle);
 });
+
+const resultImage = document.querySelector(`.result__image .result__image-green`);
+const resultImageStyle = `.form--result .form__button,.form--result .form__button::before,.form--result #email-field2,.form--result #email-field2::placeholder { animation-play-state: running; }`;
+resultImage.addEventListener(`animationend`, function () {
+  addStyle(resultImage, resultImageStyle);
+});
