@@ -651,7 +651,7 @@
 
         .form {
             &__button {
-                // width: 31rem;
+                width: 31rem;
                 flex-grow: 0;
                 /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
                 animation-duration: 0.3s;
@@ -727,28 +727,5 @@
     }
     100% {
         color: $c-dark;
-    }
-    1% {
-        opacity: 1;
-    }
-    10% {
-        width: 0;
-        padding: 3rem;
-    }
-    90% {
-        padding: 0 5.6rem;
-    }
-    100% {
-        width: calc(100% - 31rem);
-    }
-}
-
-@keyframes emailfieldplaceholder {
-    0% {
-        color: transparent;
-    }
-    100% {
-        color: red;
-        text-decoration: none;
     }
 }
