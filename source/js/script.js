@@ -35,7 +35,6 @@ document.addEventListener(`DOMContentLoaded`, function () {
 });
 
 const addStyle = function (element, css) {
-  // const css = `.rules__link { animation-play-state: running, running; } .rules__link::before { animation-play-state: running; }`;
   const head = document.head || document.getElementsByTagName(`head`)[0];
   const style = document.createElement(`style`);
 
@@ -56,3 +55,10 @@ rulesLink.addEventListener(`animationend`, function () {
   addStyle(rulesLink, rulesLinkStyle);
 });
 
+const resultImage = document.querySelector(`.result__image .result__image-green`);
+const resultImageStyle = `.form--result .form__button,.form--result .form__button::before { animation-play-state: running; }`;
+const fieldEmail = document.getElementById(`email-field2`);
+resultImage.addEventListener(`animationend`, function () {
+  addStyle(resultImage, resultImageStyle);
+  fieldEmail.classList.add(`form__field--active`);
+});
