@@ -16,7 +16,7 @@ export default class CreateAnimatedSlogan {
 
   countDelayLetter(counter) {
     let delayLetter;
-    const count = (counter > 17) ? counter - 17 : counter;
+    const count = (counter > 17) ? counter % 17 : counter;
     switch (count) {
       case 1:
         delayLetter = 300;

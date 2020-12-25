@@ -54,7 +54,11 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
-      // animate title
+      if (this.activeScreen === 1) {
+        // document.querySelector(`body`).classList.add(`activeslide1`);
+      } else {
+        document.querySelector(`body`).classList.remove(`activeslide1`, `activeslide2`, `activeslide3`, `activeslide4`);
+      }
       if (this.activeScreen === 0) {
         // Slogan animate
         const animationTopScreenTextLine = new CreateAnimatedSlogan(`.intro__title`, 500, `active`, `transform`);

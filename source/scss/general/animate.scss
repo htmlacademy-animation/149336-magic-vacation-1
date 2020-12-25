@@ -2,7 +2,7 @@
     &__menu {
         a  {
             position: relative;
-            color: white;
+            // color: white;
 
             &::before {
                 content: "";
@@ -176,75 +176,180 @@
     }
 }
 
-.page-header {
-    &__logo {
-        transform: translateX(-2rem);
+.screen__footer {
+    /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+    /*animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-name: fullback;*/
+    // animation: 0.5s ease 0s 1 reverse running full;
+
+    &.screen__footer--back {
+        /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        animation-delay: 0.5s;
+        animation-iteration-count: 1;
+        animation-direction: reverse;
+        animation-fill-mode: both;
+        animation-play-state: running;
+        animation-name: fullback;
+
+        .screen__footer-wrapper {
+            /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+            animation-duration: 0.5s;
+            animation-timing-function: ease;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: reverse;
+            animation-fill-mode: both;
+            animation-play-state: running;
+            animation-name: fulltextback;
+        }
+    }
+
+    &.screen__footer--full {
+        /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: both;
+        animation-play-state: running;
+        animation-name: full;
+
+        .screen__footer-wrapper {
+            /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+            animation-duration: 0.5s;
+            animation-timing-function: ease;
+            animation-delay: 0.5s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: both;
+            animation-play-state: running;
+            animation-name: fulltext;
+        }
+    }
+}
+
+@keyframes full {
+    from {
+        transform: translateX(-100%) translateY(100%);
+    }
+    to {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes fulltext {
+    from {
         opacity: 0;
-        transition-property: all;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fullback {
+    from {
+        transform: translateX(-100%) translateY(100%);
+    }
+    to {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes fulltextback {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.loaded {
+    .screen__footer {
+        transform: none;
+    }
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+    .page-header {
+        &__logo {
+            transform: translateX(-2rem);
+            opacity: 0;
+            transition-property: all;
+            transition-duration: 0.3s;
+            transition-timing-function: cubic-bezier(.5,.31,.28,1);
+        }
+    
+        &__nav {
+            transform: translateX(0.5rem);
+            opacity: 0;
+            transition-property: all;
+            transition-duration: 0.2s;
+            transition-delay: 0.2s;
+            transition-timing-function: cubic-bezier(.5,.31,.28,1);
+        }
+    }
+
+    .screen__footer {
+        transform: translateY(100%);
+        transition-property: transform;
         transition-duration: 0.3s;
         transition-timing-function: cubic-bezier(.5,.31,.28,1);
     }
 
-    &__nav {
-        transform: translateX(0.5rem);
-        opacity: 0;
-        transition-property: all;
-        transition-duration: 0.2s;
-        transition-delay: 0.2s;
-        transition-timing-function: cubic-bezier(.5,.31,.28,1);
-    }
-}
-
-.screen__footer {
-    transform: translateY(100%);
-    transition-property: transform;
-    transition-duration: 0.3s;
-    transition-timing-function: cubic-bezier(.5,.31,.28,1);
-}
-
-.loaded {
-    .page-header {
-        &__logo {
-            opacity: 1;
-            transform: none;
-        }
-
-        &__nav {
-            opacity: 1;
-            transform: none;
-        }
-    }
-
-    .social-block {
-        &__toggler {
-            &::before {
-                width: 100%;
-                height: 100%;
-                animation: 0.6s move cubic-bezier(.1,1.84,.92,.93) both 1 alternate;
+    .loaded {
+        .page-header {
+            &__logo {
+                opacity: 1;
+                transform: none;
             }
-
-            &:hover {
+    
+            &__nav {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    
+        .social-block {
+            &__toggler {
                 &::before {
-                    width: 112.5%;
-                    height: 112.5%;
+                    width: 100%;
+                    height: 100%;
+                    animation: 0.6s move cubic-bezier(.1,1.84,.92,.93) both 1 alternate;
                 }
-            }
-        }
-
-        &--active {
-            .social-block {
-                &__toggler {
+    
+                &:hover {
                     &::before {
                         width: 112.5%;
                         height: 112.5%;
                     }
                 }
             }
+    
+            &--active {
+                .social-block {
+                    &__toggler {
+                        &::before {
+                            width: 112.5%;
+                            height: 112.5%;
+                        }
+                    }
+                }
+            }
         }
-    }
-
-    .screen__footer {
-        transform: none;
+    
+        .screen__footer {
+            transform: none;
+        }
     }
 }
 
@@ -420,10 +525,6 @@
             }
         }
     }
-}
-
-.game__buttons {
-    display: block;
 }
 
 // Viktory
@@ -727,5 +828,334 @@
     }
     100% {
         color: $c-dark;
+    }
+}
+
+.slider__control {
+
+    &--prev,
+    &--next {
+        opacity: 0;
+
+        &.swiper-button-disabled {
+            opacity: 0;
+        }
+    }
+}
+
+.screen--story {
+    &.active {
+        .slider__control {
+
+            &--prev {
+                /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+                animation-duration: 0.5s;
+                animation-timing-function: linear;
+                animation-delay: 0s;
+                animation-iteration-count: 1;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-play-state: running;
+                animation-name: paginationprev;
+            }
+
+            &--next {
+                /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+                animation-duration: 0.5s;
+                animation-timing-function: linear;
+                animation-delay: 0s;
+                animation-iteration-count: 1;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-play-state: running;
+                animation-name: paginationnext;
+            }
+        }
+    }
+}
+
+@keyframes paginationprev {
+    0% {
+        opacity: 0;
+        transform: translateX(-56px) rotate(-180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+}
+
+@keyframes paginationnext{
+    0% {
+        opacity: 0;
+        transform: translateX(56px) rotate(180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+}
+
+body {
+    &.activeslide1 {
+
+        .page-header {
+
+            &__menu {
+                a {
+                    &:hover,
+                    &:focus {
+                        color: $c-dark;
+
+                        &::before,
+                        &::after {
+                            background-color: $c-dark;
+                        }
+                    }
+
+                    &::before {
+                        background-color: $c-dark;
+                    }
+                }
+            }
+        }
+
+        .social-block {
+            &__toggler {
+                color: $c-purple;
+
+                &:hover {
+                    color: $c-dark;
+                }
+
+                &:focus {
+                    color: $c-dark;
+
+                    &::before {
+                        border-color: $c-dark;
+                    }
+                }
+
+                &:active {
+                    color: white;
+
+                    &::before {
+                        background-color: $c-dark;
+                    }
+                }
+            }
+        }
+
+        .slider__control {
+            color: $c-dark;
+
+            &:active {
+                //color: white;
+
+                &::before,
+                &:focus::before {
+                    //background-color: $c-dark;
+                    //border-color: $c-dark;
+                }
+            }
+
+            &:focus {
+                &::before {
+                    //border-color: $c-dark;
+                }
+            }
+        }
+    }
+
+    &.activeslide2 {
+
+        .page-header {
+
+            &__menu {
+                a {
+                    &:hover,
+                    &:focus {
+                        color: $c-anakiwa;
+
+                        &::before,
+                        &::after {
+                            background-color: $c-anakiwa;
+                        }
+                    }
+
+                    &::before {
+                        background-color: $c-anakiwa;
+                    }
+                }
+            }
+        }
+
+        .social-block {
+            &__toggler {
+                color: $c-royalblue;
+
+                &:hover {
+                    color: $c-anakiwa;
+                }
+
+                &:focus {
+                    color: $c-anakiwa;
+
+                    &::before {
+                        border-color: $c-anakiwa;
+                    }
+                }
+
+                &:active {
+                    color: white;
+
+                    &::before {
+                        background-color: $c-anakiwa;
+                    }
+                }
+            }
+        }
+
+        .slider__control {
+            color: $c-royalblue;
+
+            &:active {
+                color: white;
+
+                &::before,
+                &:focus::before {
+                    background-color: $c-anakiwa;
+                    border-color: $c-anakiwa;
+                }
+            }
+
+            &:focus {
+                &::before {
+                    border-color: $c-anakiwa;
+                }
+            }
+        }
+    }
+
+    &.activeslide3 {
+
+        .page-header {
+
+            &__menu {
+                a {
+                    &:hover,
+                    &:focus {
+                        color: $c-royalblue;
+
+                        &::before,
+                        &::after {
+                            background-color: $c-royalblue;
+                        }
+                    }
+
+                    &::before {
+                        background-color: $c-royalblue;
+                    }
+                }
+            }
+        }
+
+        .social-block {
+            &__toggler {
+                color: $c-anakiwa2;
+
+                &:hover {
+                    color: $c-royalblue;
+                }
+
+                &:focus {
+                    color: $c-royalblue;
+
+                    &::before {
+                        border-color: $c-royalblue;
+                    }
+                }
+
+                &:active {
+                    color: white;
+
+                    &::before {
+                        background-color: $c-royalblue;
+                    }
+                }
+            }
+        }
+
+        .slider__control {
+            color: $c-royalblue;
+
+            &:active {
+                color: white;
+
+                &::before,
+                &:focus::before {
+                    background-color: $c-royalblue;
+                    border-color: $c-royalblue;
+                }
+            }
+
+            &:focus {
+                &::before {
+                    border-color: $c-royalblue;
+                }
+            }
+        }
+    }
+}
+
+.game__buttons {
+    display: block;
+}
+
+.result {
+    &__button {
+
+        &-text {
+            margin: 0;
+            /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+            animation-duration: 0.8s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: both;
+            animation-play-state: running;
+            animation-name: resulttext;
+        }
+
+        span {
+            /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: both;
+            animation-play-state: running;
+            animation-name: resultbtn;
+        }
+    }
+}
+
+@keyframes resulttext{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes resultbtn{
+    0% {
+        transform: translateX(5rem) rotate(180deg);
+    }
+    100% {
+        transform: translateX(0) rotate(0);
     }
 }
