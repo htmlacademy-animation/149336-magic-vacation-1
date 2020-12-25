@@ -949,21 +949,21 @@ body {
         .slider__control {
             color: $c-dark;
 
-            &:active {
-                //color: white;
+            /*&:active {
+                color: white;
 
                 &::before,
                 &:focus::before {
-                    //background-color: $c-dark;
-                    //border-color: $c-dark;
+                    background-color: $c-dark;
+                    border-color: $c-dark;
                 }
             }
 
             &:focus {
                 &::before {
-                    //border-color: $c-dark;
+                    border-color: $c-dark;
                 }
-            }
+            }*/
         }
     }
 
