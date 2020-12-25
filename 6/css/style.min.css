@@ -3962,7 +3962,22 @@ body.activeslide1 .social-block__toggler {
       background-color: #5f458c; }
 
 body.activeslide1 .slider__control {
-  color: #5f458c; }
+  color: #5f458c;
+  /*&:active {
+                color: white;
+
+                &::before,
+                &:focus::before {
+                    background-color: $c-dark;
+                    border-color: $c-dark;
+                }
+            }
+
+            &:focus {
+                &::before {
+                    border-color: $c-dark;
+                }
+            }*/ }
 
 body.activeslide2 .page-header__menu a:hover, body.activeslide2 .page-header__menu a:focus {
   color: #a0ceff; }
