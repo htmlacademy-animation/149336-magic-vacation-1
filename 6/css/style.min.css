@@ -2616,7 +2616,7 @@ img {
       width: 3.5rem;
       height: 3.5rem;
       border-radius: 0 3.6rem 0 0; }
-      .screen__footer.screen__footer--full {
+      .screen__footer.screen__footer--full, .screen__footer.screen__footer--back {
         width: 100%;
         height: 18rem; } }
   @media (max-width: 768px) and (orientation: landscape) {
@@ -2624,7 +2624,7 @@ img {
       width: 3.5rem;
       height: 3.5rem;
       border-radius: 0 3.6rem 0 0; }
-      .screen__footer.screen__footer--full {
+      .screen__footer.screen__footer--full, .screen__footer.screen__footer--back {
         width: 100%;
         height: 16rem; } }
 
@@ -2644,12 +2644,12 @@ img {
   @media (max-width: 1024px) and (orientation: portrait) {
     .screen__footer-wrapper {
       opacity: 0; }
-      .screen__footer--full .screen__footer-wrapper {
+      .screen__footer--full .screen__footer-wrapper, .screen__footer.screen__footer--back .screen__footer-wrapper {
         opacity: 1; } }
   @media (max-width: 768px) and (orientation: landscape) {
     .screen__footer-wrapper {
       opacity: 0; }
-      .screen__footer--full .screen__footer-wrapper {
+      .screen__footer--full .screen__footer-wrapper, .screen__footer.screen__footer--back .screen__footer-wrapper {
         opacity: 1; } }
 
 .screen__footer-enlarge {
@@ -2672,13 +2672,13 @@ img {
   @media (max-width: 1024px) and (orientation: portrait) {
     .screen__footer-enlarge {
       display: block; }
-      .screen__footer--full .screen__footer-enlarge {
+      .screen__footer--full .screen__footer-enlarge, .screen__footer.screen__footer--back .screen__footer-enlarge {
         opacity: 0;
         pointer-events: none; } }
   @media (max-width: 768px) and (orientation: landscape) {
     .screen__footer-enlarge {
       display: block; }
-      .screen__footer--full .screen__footer-enlarge {
+      .screen__footer--full .screen__footer-enlarge, .screen__footer.screen__footer--back .screen__footer-enlarge {
         opacity: 0;
         pointer-events: none; } }
   .screen__footer-enlarge svg {
@@ -2711,7 +2711,7 @@ img {
       display: block;
       opacity: 0;
       pointer-events: none; }
-      .screen__footer--full .screen__footer-collapse {
+      .screen__footer--full .screen__footer-collapse, .screen__footer.screen__footer--back .screen__footer-collapse {
         opacity: 1;
         pointer-events: auto; } }
   @media (max-width: 768px) and (orientation: landscape) {
@@ -2719,7 +2719,7 @@ img {
       display: block;
       opacity: 0;
       pointer-events: none; }
-      .screen__footer--full .screen__footer-collapse {
+      .screen__footer--full .screen__footer-collapse, .screen__footer.screen__footer--back .screen__footer-collapse {
         opacity: 1;
         pointer-events: auto; } }
   .screen__footer-collapse svg {
@@ -3399,56 +3399,53 @@ img {
   .form#message-form .form__button {
     flex-grow: 0; }
 
-.screen__footer {
+.screen__footer.screen__footer--full, .screen__footer.screen__footer--back {
   /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-  /*animation-duration: 0.5s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: reverse;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
-    animation-name: fullback;*/ }
-  .screen__footer.screen__footer--back {
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: both;
+  animation-play-state: running;
+  animation-name: full; }
+  .screen__footer.screen__footer--full .screen__footer-wrapper, .screen__footer.screen__footer--back .screen__footer-wrapper {
     /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
     animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-delay: 0.5s;
     animation-iteration-count: 1;
-    animation-direction: reverse;
+    animation-direction: normal;
     animation-fill-mode: both;
     animation-play-state: running;
-    animation-name: fullback; }
-    .screen__footer.screen__footer--back .screen__footer-wrapper {
-      /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-      animation-duration: 0.5s;
-      animation-timing-function: ease;
-      animation-delay: 0s;
-      animation-iteration-count: 1;
-      animation-direction: reverse;
-      animation-fill-mode: both;
-      animation-play-state: running;
-      animation-name: fulltextback; }
-  .screen__footer.screen__footer--full {
+    animation-name: fulltext; }
+
+.screen__footer.screen__footer--back {
+  /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-delay: 0.5s;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+  animation-fill-mode: both;
+  animation-play-state: running;
+  animation-name: fullback; }
+  .screen__footer.screen__footer--back .screen__footer-enlarge {
+    opacity: 1;
+    pointer-events: auto; }
+  .screen__footer.screen__footer--back .screen__footer-collapse {
+    opacity: 0;
+    pointer-events: none; }
+  .screen__footer.screen__footer--back .screen__footer-wrapper {
     /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
     animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-delay: 0s;
     animation-iteration-count: 1;
-    animation-direction: normal;
+    animation-direction: reverse;
     animation-fill-mode: both;
     animation-play-state: running;
-    animation-name: full; }
-    .screen__footer.screen__footer--full .screen__footer-wrapper {
-      /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-      animation-duration: 0.5s;
-      animation-timing-function: ease;
-      animation-delay: 0.5s;
-      animation-iteration-count: 1;
-      animation-direction: normal;
-      animation-fill-mode: both;
-      animation-play-state: running;
-      animation-name: fulltext; }
+    animation-name: fulltextback; }
 
 @keyframes full {
   from {
@@ -3462,11 +3459,23 @@ img {
   to {
     opacity: 1; } }
 
-@keyframes fullback {
-  from {
-    transform: translateX(-100%) translateY(100%); }
-  to {
-    transform: translateX(0) translateY(0); } }
+@media (max-width: 1024px) and (orientation: portrait) {
+  @keyframes fullback {
+    from {
+      width: 3.5rem;
+      height: 3.5rem; }
+    to {
+      width: 100%;
+      height: 18rem; } } }
+
+@media (max-width: 768px) and (orientation: landscape) {
+  @keyframes fullback {
+    from {
+      width: 3.5rem;
+      height: 3.5rem; }
+    to {
+      width: 100%;
+      height: 16rem; } } }
 
 @keyframes fulltextback {
   from {
