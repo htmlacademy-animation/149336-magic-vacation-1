@@ -177,40 +177,6 @@
 }
 
 .screen__footer {
-    /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-    /*animation-duration: 0.5s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: reverse;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
-    animation-name: fullback;*/
-    // animation: 0.5s ease 0s 1 reverse running full;
-
-    &.screen__footer--back {
-        /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-        animation-duration: 0.5s;
-        animation-timing-function: ease;
-        animation-delay: 0.5s;
-        animation-iteration-count: 1;
-        animation-direction: reverse;
-        animation-fill-mode: both;
-        animation-play-state: running;
-        animation-name: fullback;
-
-        .screen__footer-wrapper {
-            /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-            animation-duration: 0.5s;
-            animation-timing-function: ease;
-            animation-delay: 0s;
-            animation-iteration-count: 1;
-            animation-direction: reverse;
-            animation-fill-mode: both;
-            animation-play-state: running;
-            animation-name: fulltextback;
-        }
-    }
 
     &.screen__footer--full {
         /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
@@ -235,6 +201,41 @@
             animation-name: fulltext;
         }
     }
+
+    &.screen__footer--back {
+        @extend .screen__footer--full;
+        /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        animation-delay: 0.5s;
+        animation-iteration-count: 1;
+        animation-direction: reverse;
+        animation-fill-mode: both;
+        animation-play-state: running;
+        animation-name: fullback;
+
+        .screen__footer-enlarge {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .screen__footer-collapse {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .screen__footer-wrapper {
+            /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+            animation-duration: 0.5s;
+            animation-timing-function: ease;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: reverse;
+            animation-fill-mode: both;
+            animation-play-state: running;
+            animation-name: fulltextback;
+        }
+    }
 }
 
 @keyframes full {
@@ -255,12 +256,33 @@
     }
 }
 
-@keyframes fullback {
-    from {
-        transform: translateX(-100%) translateY(100%);
+@media (max-width: $tablet) and (orientation: portrait) {
+    @keyframes fullback {
+        from {
+            //transform: translateX(0) translateY(0);
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+        to {
+            //transform: translateX(0) translateY(0);
+            width: 100%;
+            height: 18rem;
+        }
     }
-    to {
-        transform: translateX(0) translateY(0);
+}
+
+@media (max-width: $mobile) and (orientation: landscape) {
+    @keyframes fullback {
+        from {
+            //transform: translateX(0) translateY(0);
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+        to {
+            //transform: translateX(0) translateY(0);
+            width: 100%;
+            height: 16rem;
+        }
     }
 }
 
