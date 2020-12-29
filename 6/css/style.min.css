@@ -4088,5 +4088,22 @@ body.activeslide3 .slider__control {
   100% {
     transform: translateX(0) rotate(0); } }
 
+.screen--rules .disclaimer ul {
+  /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: both;
+  animation-play-state: running;
+  animation-name: showtext; }
+
+@keyframes showtext {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 
 /*# sourceMappingURL=style.min.css.map*/
