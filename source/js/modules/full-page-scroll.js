@@ -11,6 +11,7 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.activeTheme = ``;
   }
 
   init() {
@@ -54,7 +55,20 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
-      // animate title
+      if (this.activeScreen === 1 && this.activeTheme.length > 0) {
+        document.querySelector(`body`).classList.add(this.activeTheme);
+      } else {
+        if (document.body.classList.contains(`activeslide1`)) {
+          this.activeTheme = `activeslide1`;
+        } else if (document.body.classList.contains(`activeslide2`)) {
+          this.activeTheme = `activeslide2`;
+        } else if (document.body.classList.contains(`activeslide3`)) {
+          this.activeTheme = `activeslide3`;
+        } else if (document.body.classList.contains(`activeslide4`)) {
+          this.activeTheme = `activeslide4`;
+        }
+        document.querySelector(`body`).classList.remove(`activeslide1`, `activeslide2`, `activeslide3`, `activeslide4`);
+      }
       if (this.activeScreen === 0) {
         // Slogan animate
         const animationTopScreenTextLine = new CreateAnimatedSlogan(`.intro__title`, 500, `active`, `transform`);
