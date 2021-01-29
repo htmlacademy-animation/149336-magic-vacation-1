@@ -10433,6 +10433,8 @@ __webpack_require__.r(__webpack_exports__);
         header.classList.remove(`page-header--menu-opened`);
         document.body.classList.remove(`menu-opened`);
       }
+      const firstPrize = document.querySelector(`.prizes__item--journeys`);
+      firstPrize.querySelector(`img`).setAttribute(`src`, `img/primary-award.svg`);
     });
   }
 });
