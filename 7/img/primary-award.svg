@@ -184,7 +184,8 @@
             begin="offRightCloud.end"
             end="3s"
             fill="freeze"
-            repeatCount="1"/>
+            repeatCount="1"
+            additive="sum" />
     <line x1="258.96" y1="93.19" x2="298.74" y2="93.19" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
     <g>
       <path d="M278.75,82.91H251.39a12.4,12.4,0,1,0-24.8,0H208.65" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
@@ -329,11 +330,12 @@
     <animateTransform attributeName="transform"
                       type="translate"
                       values="-65 0; 0 0;"
-                      dur="0.2s"
+                      dur="0.44s"
                       begin="onSecondPart.begin+3.3s"
                       calcMode="linear"
                       fill="freeze"
-                      repeatCount="1" />
+                      repeatCount="1"
+                      additive="sum"  />
     <animateTransform attributeName="transform"
                       type="rotate"
                       values="-6.42; 5; -2.5; 1.2; 0"
@@ -343,7 +345,8 @@
                       begin="onSecondPart.begin+3.5s"
                       calcMode="spline"
                       fill="freeze"
-                      repeatCount="1" />
+                      repeatCount="1"
+                      additive="sum"  />
     <path d="M79.18,194A131,131,0,0,1,94.77,220.9a255,255,0,0,1-20.08-23.55,259,259,0,0,1-17.07-25.88A131.72,131.72,0,0,1,79.18,194" fill="#36e69a"/>
     <path d="M80.94,214.39a127.19,127.19,0,0,1,22.8,20.49A242.09,242.09,0,0,1,77.9,219.17a235.86,235.86,0,0,1-23.42-18.7,119.82,119.82,0,0,1,26.46,13.92" fill="#36e69a"/>
     <path d="M93.66,205.48a258.38,258.38,0,0,0,10.08,29.39,125.63,125.63,0,0,0-4.5-30.52,135.9,135.9,0,0,0-12.06-29.44,260.33,260.33,0,0,0,6.47,30.57" fill="#36e69a"/>
