@@ -85,6 +85,45 @@ export default class FullPageScroll {
           animationTextLine.runAnimation();
           // setTimeout(() => animationTextLine.destroyAnimation(), 1000);
         }, 500);
+
+        let criterion;
+
+        function animate(options) {
+          let endtime = new Date(Date.parse(new Date()) + options.duration);
+
+          requestAnimationFrame(criterion = function () {
+            let time = new Date();
+            let timeFraction = (endtime - time) / options.duration;
+            // let progress = options.timing(timeFraction);
+            options.draw(endtime, time);
+            if (timeFraction < 1) {
+              requestAnimationFrame(criterion);
+            } else {
+              cancelAnimationFrame(criterion);
+            }
+          });
+        }
+
+        function timerStart() {
+          animate({
+            duration: 300000,	// 5 minutes
+            timing(timeFraction) {
+              return timeFraction;
+            },
+            draw(endtime, time) {
+              let t = Date.parse(endtime) - Date.parse(time);
+              if (t < 0) {
+                return false;
+              }
+              let seconds = Math.floor((t / 1000) % 60);
+              let minutes = Math.floor((t / 1000 / 60) % 60);
+              document.querySelector(`.game__counter`).firstElementChild.textContent = `0${minutes}`.slice(-2);
+              document.querySelector(`.game__counter`).lastElementChild.textContent = `0${seconds}`.slice(-2);
+            }
+          });
+        }
+
+        timerStart();
       }
     }, 500);
   }
