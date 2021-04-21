@@ -10278,6 +10278,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/throttle */ "./node_modules/lodash/throttle.js");
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _slogan__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slogan */ "./source/js/modules/slogan.js");
+/* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./timer */ "./source/js/modules/timer.js");
+
 
 
 
@@ -10365,45 +10367,12 @@ class FullPageScroll {
           animationTextLine.runAnimation();
           // setTimeout(() => animationTextLine.destroyAnimation(), 1000);
         }, 500);
-
-        let criterion;
-
-        function animate(options) {
-          let endtime = new Date(Date.parse(new Date()) + options.duration);
-
-          requestAnimationFrame(criterion = function () {
-            let time = new Date();
-            let timeFraction = (endtime - time) / options.duration;
-            // let progress = options.timing(timeFraction);
-            options.draw(endtime, time);
-            if (timeFraction < 1) {
-              requestAnimationFrame(criterion);
-            } else {
-              cancelAnimationFrame(criterion);
-            }
-          });
+        if (this.activeScreen === 4) {
+          let timer = new _timer__WEBPACK_IMPORTED_MODULE_2__["default"]();
+          timer.timerStart(12);
+        } else {
+          // timer.timerFinish();
         }
-
-        function timerStart() {
-          animate({
-            duration: 300000,	// 5 minutes
-            timing(timeFraction) {
-              return timeFraction;
-            },
-            draw(endtime, time) {
-              let t = Date.parse(endtime) - Date.parse(time);
-              if (t < 0) {
-                return false;
-              }
-              let seconds = Math.floor((t / 1000) % 60);
-              let minutes = Math.floor((t / 1000 / 60) % 60);
-              document.querySelector(`.game__counter`).firstElementChild.textContent = `0${minutes}`.slice(-2);
-              document.querySelector(`.game__counter`).lastElementChild.textContent = `0${seconds}`.slice(-2);
-            }
-          });
-        }
-
-        timerStart();
       }
     }, 500);
   }
@@ -10538,8 +10507,8 @@ __webpack_require__.r(__webpack_exports__);
               <animate attributeName="stroke-dasharray"
                                       dur="0.5s"
                                       begin="titleResultOpacity.begin"
-                                      values="0 ${pathLength/3};
-                                              ${pathLength/3} 0"
+                                      values="0 ${pathLength / 3};
+                                              ${pathLength / 3} 0"
                                       fill="freeze"
                                       repeatCount="1" />
             `;
@@ -10556,8 +10525,8 @@ __webpack_require__.r(__webpack_exports__);
               <animate attributeName="stroke-dasharray"
                                       dur="0.5s"
                                       begin="titleResult2Opacity.begin"
-                                      values="0 ${pathLength/3};
-                                              ${pathLength/3} 0"
+                                      values="0 ${pathLength / 3};
+                                              ${pathLength / 3} 0"
                                       fill="freeze"
                                       repeatCount="1" />
             `;
@@ -10574,8 +10543,8 @@ __webpack_require__.r(__webpack_exports__);
               <animate attributeName="stroke-dasharray"
                                       dur="0.778s"
                                       begin="titleResult3Opacity.begin"
-                                      values="0 ${pathLength/3};
-                                              ${pathLength/3} 0"
+                                      values="0 ${pathLength / 3};
+                                              ${pathLength / 3} 0"
                                       fill="freeze"
                                       repeatCount="1" />
             `;
@@ -10852,6 +10821,82 @@ __webpack_require__.r(__webpack_exports__);
     socialBlock.classList.remove(`social-block--active`);
   });
 });
+
+
+/***/ }),
+
+/***/ "./source/js/modules/timer.js":
+/*!************************************!*\
+  !*** ./source/js/modules/timer.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CreateAnimatedTimer; });
+class CreateAnimatedTimer {
+
+  constructor() {}
+
+  animate(options) {
+    let criterion;
+    let start = performance.now();
+    requestAnimationFrame(criterion = function (time) {
+      let timeFraction = (time - start) / options.duration;
+      let progress = options.timing(timeFraction);
+      let dur = options.duration;
+      options.draw(progress, dur);
+      if (timeFraction < 1) {
+        requestAnimationFrame(criterion);
+      } else {
+        cancelAnimationFrame(criterion);
+      }
+    });
+  }
+
+  timerStart(fps) {
+    // общие переменные для реализации точного fps
+    let fpsInterval = 1000 / fps;
+    let now;
+    let then = Date.now();
+    let elapsed;
+
+    this.animate({
+      duration: 300000,	// 5 minutes
+      timing: (timeFraction) => {
+        return timeFraction;
+      },
+      draw: (progress, duration) => {
+        let t = duration * (1 - progress);
+        if (t < 0) {
+          return false;
+        } else {
+          // проверяем, сколько времени прошло с предыдущего запуска
+          now = Date.now();
+
+          elapsed = now - then;
+          // проверяем, достаточно ли прошло времени с предыдущей отрисовки кадра
+          if (elapsed > fpsInterval) {
+            // сохранение времени текущей отрисовки кадра
+            then = now - (elapsed % fpsInterval);
+
+            // запуск функции отрисовки
+            let seconds = Math.floor((t / 1000) % 60);
+            let minutes = Math.floor((t / 1000 / 60) % 60);
+            document.querySelector(`.game__counter`).firstElementChild.textContent = `0${minutes}`.slice(-2);
+            document.querySelector(`.game__counter`).lastElementChild.textContent = `0${seconds}`.slice(-2);
+          }
+        }
+        return true;
+      }
+    });
+  }
+
+  timerFinish() {
+    // cancelAnimationFrame(criterion);
+  }
+}
 
 
 /***/ }),
