@@ -23,8 +23,8 @@ export default () => {
               <animate attributeName="stroke-dasharray"
                                       dur="0.5s"
                                       begin="titleResultOpacity.begin"
-                                      values="0 ${pathLength/3};
-                                              ${pathLength/3} 0"
+                                      values="0 ${pathLength / 3};
+                                              ${pathLength / 3} 0"
                                       fill="freeze"
                                       repeatCount="1" />
             `;
@@ -41,8 +41,8 @@ export default () => {
               <animate attributeName="stroke-dasharray"
                                       dur="0.5s"
                                       begin="titleResult2Opacity.begin"
-                                      values="0 ${pathLength/3};
-                                              ${pathLength/3} 0"
+                                      values="0 ${pathLength / 3};
+                                              ${pathLength / 3} 0"
                                       fill="freeze"
                                       repeatCount="1" />
             `;
@@ -59,8 +59,8 @@ export default () => {
               <animate attributeName="stroke-dasharray"
                                       dur="0.778s"
                                       begin="titleResult3Opacity.begin"
-                                      values="0 ${pathLength/3};
-                                              ${pathLength/3} 0"
+                                      values="0 ${pathLength / 3};
+                                              ${pathLength / 3} 0"
                                       fill="freeze"
                                       repeatCount="1" />
             `;

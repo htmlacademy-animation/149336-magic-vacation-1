@@ -1,5 +1,6 @@
 import throttle from 'lodash/throttle';
 import CreateAnimatedSlogan from './slogan';
+import CreateAnimatedTimer from './timer';
 
 export default class FullPageScroll {
   constructor() {
@@ -85,6 +86,12 @@ export default class FullPageScroll {
           animationTextLine.runAnimation();
           // setTimeout(() => animationTextLine.destroyAnimation(), 1000);
         }, 500);
+        if (this.activeScreen === 4) {
+          let timer = new CreateAnimatedTimer();
+          timer.timerStart(12);
+        } else {
+          // timer.timerFinish();
+        }
       }
     }, 500);
   }
